@@ -1,0 +1,28 @@
+Multiplikations spel
+
+* Om svaret är mer än 9 vänta på 2 siffror, om svaret är mer än 99 vänta på 3 siffror
+
+* Matematisk formula för att räkna ut antal poäng, tid + antal rätt + antal tabeller
+
+* Olika Highscores beroende på antal tabeller
+
+Menu:
+
+	Gör så att man kan välja om man vill ha svarsalternativ att välja på eller inte. (Senare)
+
+	Antal tal man vill göra.
+
+	Timed knapp som kan sätta på tidtagning
+
+
+Score screen:
+	
+	Text under resultat. 50% <= rätt = "Good", 50% > rätt = "Great", 100% rätt = "Perfect"
+	
+	Timed only: 
+		
+		Show score
+		
+		Indicate new top 10 Highscore
+		
+		Indicate new top Highscore
