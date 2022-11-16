@@ -18,47 +18,47 @@
                     <fieldset>
                         <legend>Tables</legend>
                         <div>
-                            <input type="checkbox" id="tables-1" name="one" value="1">
+                            <input type="checkbox" id="tables-1" name="one" value="1" class="tablesCheckbox">
                             <label for="one">1</label>
                         </div>
 
                         <div>
-                            <input type="checkbox" id="tables-2" name="two" value="2">
+                            <input type="checkbox" id="tables-2" name="two" value="2" class="tablesCheckbox">
                             <label for="two">2</label>
                         </div>
 
                         <div>
-                            <input type="checkbox" id="tables-3" name="three" value="3">
+                            <input type="checkbox" id="tables-3" name="three" value="3" class="tablesCheckbox">
                             <label for="three">3</label>
                         </div>
 
                         <div>
-                            <input type="checkbox" id="tables-4" name="four" value="4">
+                            <input type="checkbox" id="tables-4" name="four" value="4" class="tablesCheckbox">
                             <label for="four">4</label>
                         </div>
 
                         <div>
-                            <input type="checkbox" id="tables-5" name="five" value="5">
+                            <input type="checkbox" id="tables-5" name="five" value="5" class="tablesCheckbox">
                             <label for="five">5</label>
                         </div>
 
                         <div>
-                            <input type="checkbox" id="tables-6" name="six" value="6">
+                            <input type="checkbox" id="tables-6" name="six" value="6" class="tablesCheckbox">
                             <label for="six">6</label>
                         </div>
 
                         <div>
-                            <input type="checkbox" id="tables-7" name="seven" value="7">
+                            <input type="checkbox" id="tables-7" name="seven" value="7" class="tablesCheckbox">
                             <label for="seven">7</label>
                         </div>
 
                         <div>
-                            <input type="checkbox" id="tables-8" name="eight" value="8">
+                            <input type="checkbox" id="tables-8" name="eight" value="8" class="tablesCheckbox">
                             <label for="eight">8</label>
                         </div>
 
                         <div>
-                            <input type="checkbox" id="tables-9" name="tables-9" value="9">
+                            <input type="checkbox" id="tables-9" name="tables-9" value="9" class="tablesCheckbox">
                             <label for="tables-9">9</label>
                         </div>
                     </fieldset>
@@ -71,7 +71,7 @@
                 <div class="grid-item" name="input-start">
                     <!-- Fix to only allow letters and numbers -->
                     <input type="text" name="input-name" placeholder="Name">
-                    <input type="submit" name="start-btn" value="Start">
+                    <button onclick="startFunction()">Start</button>
                 </div>
 
                 <div class="grid-item" name="timed">
@@ -112,7 +112,10 @@
             </div>
         </main>
         <script>
-
+            function startFunction() {
+                var checkedValue = document.querySelector('.tablesCheckbox').checked;
+                console.log(checkedValue);
+            }
         </script>
     </body>
 </html>
