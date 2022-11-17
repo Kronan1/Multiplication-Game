@@ -64,64 +64,86 @@
                     </fieldset>
                 </div>
 
-                <div class="grid-item" name="background-image">
-                    <img>
+                <div class="grid-item">
+                    <img id="background-image">
                 </div>
 
-                <div class="grid-item" name="input-start">
+                <div class="grid-item">
                     <!-- Fix to only allow letters and numbers -->
-                    <input type="text" name="input-name" id="input-name" placeholder="Name">
+                    <input type="text" id="input-name" placeholder="Name">
                     <button onclick="startFunction()">Start</button>
                 </div>
 
-                <div class="grid-item" name="timed">
+                <div class="grid-item"">
                     <!-- Button that works like checkbox -->
-                    <button name="timed-btn">timed</button>
+                    <button id="timed-btn">timed</button>
                 </div>
-                <div class="grid-item" name="repetitions-box">
+                <div class="grid-item" id="repetitions-box">
                     <fieldset>
                         <legend>Amount</legend>
-                        <input type="radio" id="rep-ten" name="repetitions" value="10" checked>
+                        <input type="radio" id="rep-0" value="10" name="repetitions" checked>
                         <label for="rep-ten">10</label>
 
-                        <input type="radio" id="rep-twenty" name="repetitions" value="20">
+                        <input type="radio" id="rep-1" value="20" name="repetitions">
                         <label for="rep-twenty">20</label>
 
-                        <input type="radio" id="rep-thirty" name="repetitions" value="30">
+                        <input type="radio" id="rep-2" value="30" name="repetitions">
                         <label for="rep-thirty">30</label>
 
-                        <input type="radio" id="rep-fourty" name="repetitions" value="40">
+                        <input type="radio" id="rep-3" value="40" name="repetitions">
                         <label for="rep-fourty">40</label>
 
-                        <input type="radio" id="rep-fifty" name="repetitions" value="50">
+                        <input type="radio" id="rep-4" value="50" name="repetitions">
                         <label for="rep-fifty">50</label>
 
-                        <input type="radio" id="rep-sixty" name="repetitions" value="60">
+                        <input type="radio" id="rep-5" value="60" name="repetitions">
                         <label for="rep-sixty">60</label>
 
-                        <input type="radio" id="rep-seventy" name="repetitions" value="70">
+                        <input type="radio" id="rep-6" value="70" name="repetitions">
                         <label for="rep-seventy">70</label>
 
-                        <input type="radio" id="rep-eighty" name="repetitions" value="80">
+                        <input type="radio" id="rep-7" value="80" name="repetitions">
                         <label for="rep-eighty">80</label>
 
-                        <input type="radio" id="rep-ninety" name="repetitions" value="90">
+                        <input type="radio" id="rep-8" value="90" name="repetitions">
                         <label for="rep-ninety">90</label>
                     </fieldset>
                 </div>
             </div>
         </main>
         <script>
+            
             function startFunction() {
-                var checked = "";
+                const checked = {
+                    tables: "",
+                    name: "",
+                    timed: "",
+                    repetitions: "",
+                }
+                
                 var length = document.getElementsByClassName('tablesCheckbox').length;
                 for (let index = 1; index < length + 1; index++) {
                     //const element = array[index];
-                    console.log("ischecked=" + document.getElementById("tables-"+index).checked);
-                }
+                    let selected = (document.getElementById("tables-"+index).checked);
 
-                var name = document.getElementById('input-name');
-                console.log(name.value);
+                    if (selected === true){
+                        let x = 0;
+                        checked.tables += (index.toString() + " ");
+                    }
+                }
+                console.log(checked.tables);
+                
+                checked.name = document.getElementById('input-name').value;
+                console.log(checked.name);
+
+                var repLength = document.querySelectorAll('[id^="rep-"]').length;
+                for (let index = 0; index < repLength; index++) {  
+                    if (document.getElementById("rep-"+index).checked === true){
+                        checked.repetitions = document.getElementById("rep-"+index).value;
+                        console.log(checked.repetitions);
+                    }
+                }
+                
             }
         </script>
     </body>
