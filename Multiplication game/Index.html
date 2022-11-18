@@ -5,16 +5,26 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles.css">
+        <script src="javascript.js"></script>
     </head>
     <body>
         <header>
-            <div name="header-box">
-                <button name="highscores-btn">Highscores</button>
+            <div class="grid-container start" id="startHeader" class="start">
+                <button class="grid-item" id="highscores" onclick="highscoresFunction()">Highscores</button>
+            </div>
+            <div class="grid-container playing" id="playingHeader">
+                <div class="grid-item"></div>
+                <div class="grid-item">
+                    <button class="grid-item" onclick="resetFunction()" id="test-btn">X</button>
+                </div>
+            </div>
+            <div class="grid-container" id="highscoresHeader">
+                <button onclick="resetHighscores()">Start</button>
             </div>
         </header>
         <main>
-            <div class="grid-container">
-                <div class="grid-item" name="grid-tables">
+            <div class="grid-container start" id="startMain">
+                <div class="grid-item">
                     <fieldset>
                         <legend>Tables</legend>
                         <div>
@@ -71,12 +81,12 @@
                 <div class="grid-item">
                     <!-- Fix to only allow letters and numbers -->
                     <input type="text" id="input-name" placeholder="Name">
-                    <button onclick="startFunction()">Start</button>
+                    <button onclick="startFunction()" id="start-btn">Start</button>
                 </div>
 
                 <div class="grid-item"">
                     <!-- Button that works like checkbox -->
-                    <button id="timed-btn">timed</button>
+                    <button onclick="timedFunction()" id="timed-btn">timed</button>
                 </div>
                 <div class="grid-item" id="repetitions-box">
                     <fieldset>
@@ -110,41 +120,12 @@
                     </fieldset>
                 </div>
             </div>
+            <div class="grid-container playing" id="playingMain">
+                <div class="grid-item">
+                    <p>Hi</p>
+                </div>
+            </div>
+            <div class="grid-container" id="highscoresMain"></div>
         </main>
-        <script>
-            
-            function startFunction() {
-                const checked = {
-                    tables: "",
-                    name: "",
-                    timed: "",
-                    repetitions: "",
-                }
-                
-                var length = document.getElementsByClassName('tablesCheckbox').length;
-                for (let index = 1; index < length + 1; index++) {
-                    //const element = array[index];
-                    let selected = (document.getElementById("tables-"+index).checked);
-
-                    if (selected === true){
-                        let x = 0;
-                        checked.tables += (index.toString() + " ");
-                    }
-                }
-                console.log(checked.tables);
-                
-                checked.name = document.getElementById('input-name').value;
-                console.log(checked.name);
-
-                var repLength = document.querySelectorAll('[id^="rep-"]').length;
-                for (let index = 0; index < repLength; index++) {  
-                    if (document.getElementById("rep-"+index).checked === true){
-                        checked.repetitions = document.getElementById("rep-"+index).value;
-                        console.log(checked.repetitions);
-                    }
-                }
-                
-            }
-        </script>
     </body>
 </html>
