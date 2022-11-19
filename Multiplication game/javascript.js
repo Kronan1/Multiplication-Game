@@ -11,13 +11,18 @@ const checked = {
 }
 
 
+const timer = {
+    timerStart: 0,
+}
+
+
 function timedFunction() {
-    if (checked.timed == "" || checked.timed === false) {
-        checked.timed = true;
+    if (!checked.timed === "true") {
+        checked.timed = "true";
         console.log("True");
     }
     else {
-        checked.timed = false;
+        checked.timed = "";
         console.log("False");
     }
 }
@@ -28,6 +33,8 @@ function startFunction() {
     tablesVariables();
     nameVariables();
     repVariables();
+    timedFunction();
+    timer.timerStart = Date.now();
     console.log(checked.timed);
     displayFunction("playing", "start");
     document.getElementById("numberField").focus();
@@ -183,6 +190,8 @@ function resetFunction() {
 
 
 function scoreScreen() {
+    let elapsed = (Date.now() - timer.timerStart)/1000; 
+    console.log(elapsed);
     var mistakes = checked.repetitionsDone - checked.rightAnswers;
     document.getElementById("scoreScreenCorrect").innerHTML = (checked.rightAnswers+"/"+checked.repetitionsDone)
     displayFunction("scoreScreen", "playing");
@@ -198,6 +207,7 @@ function tryAgain() {
     resetFunction();
     displayFunction("playing", "scoreScreen");
     document.getElementById("numberField").focus();
+    timer.timerStart = Date.now();
     repFunction();
 }
 //id="scoreScreenScore"
