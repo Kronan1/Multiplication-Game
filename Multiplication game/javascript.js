@@ -4,7 +4,9 @@ const checked = {
     timed: "",
     repetitions: "",
     repetitionsDone: 0,
+    lastNumber: 0,
 }
+
 
 function timedFunction() {
     if (checked.timed == "" || checked.timed === false) {
@@ -14,6 +16,7 @@ function timedFunction() {
         checked.timed = false;
     }
 }
+
 
 function startFunction() {
     tablesVariables();
@@ -26,6 +29,8 @@ function startFunction() {
     repFunction();
 }
 
+
+// Create necessary variables to play
 function tablesVariables() {
     var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
     
@@ -38,10 +43,12 @@ function tablesVariables() {
 
 }
 
+
 function nameVariables() { 
     checked.name = document.getElementById('input-name').value;
     console.log(checked.name);
 }
+
 
 function repVariables() {
     var repLength = document.querySelectorAll('[id^="rep-"]').length;
@@ -53,6 +60,8 @@ function repVariables() {
         }
 }
 
+
+// Functions to show/hide the correct visual elements
 function highscoresFunction(){
     var visibilityVar = "highscores";
     var visibilityVar2 = "start";
@@ -60,11 +69,12 @@ function highscoresFunction(){
 }
 
 
-function resetFunction(){
+function resetPlaying(){
     var visibilityVar = "start";
     var visibilityVar2 = "playing";
     displayFunction(visibilityVar, visibilityVar2);
 }
+
 
 function resetHighscores(){
     var visibilityVar = "start";
@@ -74,7 +84,6 @@ function resetHighscores(){
 
 
 function displayFunction(visibilityVar, visibilityVar2) {
- 
     document.getElementById(visibilityVar2+"Header").style.display = "none";
     document.getElementById(visibilityVar2+"Main").style.display = "none";
     document.getElementById(visibilityVar+"Header").style.display = "inherit";
@@ -84,7 +93,9 @@ function displayFunction(visibilityVar, visibilityVar2) {
     
 }
 
+
 function repFunction(){
+    // Keep track of how many repetitions to calculate
     if (checked.repetitionsDone < checked.repetitions){
         checked.repetitionsDone += 1;
         console.log(checked.repetitionsDone);
@@ -96,20 +107,31 @@ function repFunction(){
     
 }
 
+
 function calculateNumber(){
+    // Generate math problem
     var table = checked.tables[Math.floor(Math.random()*checked.tables.length)];
-    var number = table * (Math.floor(Math.random() * 11));
-    // If same number twice in a row generate new number (not working!)
-    if  (number == lastNumber){
+    var times = Math.floor(Math.random() * 11);
+    var number = table * times;
+    if  (number == checked.lastNumber){
         console.log("test");
         calculateNumber();
-        
     }
 
-
-    var lastNumber = number;
-    
+    console.log(times+" times");
+    checked.lastNumber = number;
     console.log(table+" table")    
     console.log(number+" number");
-    console.log(lastNumber+" last number");
+    console.log(checked.lastNumber+" last number");
+    solveNumber(table, times, number);
+}
+
+
+function solveNumber(table, times, number){
+    var pressedKeys = 0;
+    document.getElementById("solveTable").innerHTML = table;
+    document.getElementById("solveTimes").innerHTML = times;
+    if (pressedKeys < number.length) {
+        document.addEventListener("keyup", ) 
+    }
 }

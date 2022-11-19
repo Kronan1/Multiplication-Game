@@ -15,7 +15,7 @@
             <div class="grid-container playing" id="playingHeader">
                 <div class="grid-item"></div>
                 <div class="grid-item">
-                    <button class="grid-item" onclick="resetFunction()" id="test-btn">X</button>
+                    <button class="grid-item" onclick="resetPlaying()" id="test-btn">X</button>
                 </div>
             </div>
             <div class="grid-container" id="highscoresHeader">
@@ -122,7 +122,10 @@
             </div>
             <div class="grid-container playing" id="playingMain">
                 <div class="grid-item">
-                    <p>Hi</p>
+                    <p class="solveNumber" id="solveTable"></p>
+                    <p class="solveNumber " id="solveX">X</p>
+                    <p class="solveNumber" id="solveTimes"></p>
+                    <input type="number" autofocus="autofocus" id="numberField">
                 </div>
             </div>
             <div class="grid-container" id="highscoresMain"></div>
