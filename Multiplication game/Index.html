@@ -9,7 +9,7 @@
     </head>
     <body>
         <header>
-            <div class="grid-container start" id="startHeader" class="start">
+            <div class="grid-container start" id="startHeader">
                 <button class="grid-item" id="highscores" onclick="highscoresFunction()">Highscores</button>
             </div>
             <div class="grid-container playing" id="playingHeader">
@@ -20,6 +20,11 @@
             </div>
             <div class="grid-container" id="highscoresHeader">
                 <button onclick="resetHighscores()">Start</button>
+            </div>
+            <div class="grid-container scoreScreen" id="scoreScreenHeader">
+                <div class="grid-item">
+                    <button class="grid-item" onclick="resetScoreScreen()" id="scoreScreen-btn">X</button>
+                </div>
             </div>
         </header>
         <main>
@@ -125,10 +130,23 @@
                     <p class="solveNumber" id="solveTable"></p>
                     <p class="solveNumber " id="solveX">X</p>
                     <p class="solveNumber" id="solveTimes"></p>
-                    <input type="number" autofocus="autofocus" id="numberField">
+                    <input type="text" id="numberField" onkeyup="pressedH(this);">
                 </div>
             </div>
-            <div class="grid-container" id="highscoresMain"></div>
+            <div class="grid-container" id="scoreScreenMain">
+                <div class="grid-item">
+                    <p class="scoreScreen" id="scoreScreenWord"></p>
+                </div>
+                <div class="grid-item">
+                    <p class="scoreScreen" id="scoreScreenScore"></p>
+                </div>
+                <div class="grid-item">
+                    <p class="scoreScreen" id="scoreScreenCorrect"></p>
+                </div>
+                <div class="grid-item">
+                    <button onclick="tryAgain();" id="tryAgain-btn">Try Again</button>
+                </div>
+            </div>
         </main>
     </body>
 </html>
