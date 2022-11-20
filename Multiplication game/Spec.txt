@@ -26,3 +26,5 @@ Score screen:
 		Indicate new top 10 Highscore
 		
 		Indicate new top Highscore
+
+		Show wrong answers

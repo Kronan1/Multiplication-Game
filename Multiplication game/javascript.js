@@ -128,15 +128,17 @@ function calculateNumber(){
 
 
 function solveNumber(table, times){
-    if  (checked.number == checked.lastNumber){
-        console.log("test");
+    if  (checked.number === checked.lastNumber){
+        console.log("Same number");
         //calculateNumber(); Recursion not working properly
         calculateNumber();
     }
-
-    checked.lastNumber = checked.number;
-    document.getElementById("solveTable").innerHTML = table;
-    document.getElementById("solveTimes").innerHTML = times;
+    else {
+        console.log(checked.number+" Checked number");
+        checked.lastNumber = checked.number;
+        document.getElementById("solveTable").innerHTML = table;
+        document.getElementById("solveTimes").innerHTML = times;
+    }
 }
 
 function pressedH(){
@@ -146,22 +148,18 @@ function pressedH(){
     textbox = textbox.replace(/\D/g, '');
     document.getElementById("numberField").value = textbox;
     var answer = parseInt(textbox);
+
     if (textbox.length > numberLength){
+        // Defense against number spamming
         document.getElementById("numberField").value = "";
         numberLength = textbox.length;
     }
-    /*
-    textbox = textbox.charAt(textbox.length - 1);
-    if (!containsNumbers(textbox)){
-        console.log("Not a Number");
-        document.getElementById("numberField").value = checked.pressedKeys;
-        return;
-    }
-    */
+
     if (textbox.length === numberLength){
         if (checked.number === answer){
             checked.rightAnswers += 1;
             console.log(checked.rightAnswers+" correct");
+            console.log(answer+" Correct Answer");
             repFunction();
         }
         else {
@@ -175,14 +173,9 @@ function pressedH(){
     
 }
 
-function containsNumbers(str) {
-    return /[0-9]/.test(str);
-  }
-
 
 function resetFunction() {
     checked.number = 0;
-    checked.pressedKeys = "";
     checked.rightAnswers = 0;
     checked.repetitionsDone = 0;
     checked.lastNumber = -1;
@@ -190,9 +183,10 @@ function resetFunction() {
 
 
 function scoreScreen() {
-    let elapsed = (Date.now() - timer.timerStart)/1000; 
-    console.log(elapsed);
+    let elapsedTime = (Date.now() - timer.timerStart)/1000; 
     var mistakes = checked.repetitionsDone - checked.rightAnswers;
+    var score = 1000 - ((elapsedTime * mistakes)/checked.repetitions);
+    console.log(score);
     document.getElementById("scoreScreenCorrect").innerHTML = (checked.rightAnswers+"/"+checked.repetitionsDone)
     displayFunction("scoreScreen", "playing");
 }
