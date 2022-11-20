@@ -15,6 +15,12 @@ const timer = {
     timerStart: 0,
 }
 
+const results = {
+    word: "",
+    score: 0,
+
+}
+
 
 function timedFunction() {
     if (!checked.timed === "true") {
@@ -179,16 +185,19 @@ function resetFunction() {
     checked.rightAnswers = 0;
     checked.repetitionsDone = 0;
     checked.lastNumber = -1;
+    results.score = 0;
+    results.word = "";
 }
 
 
 function scoreScreen() {
-    // !functions return undifined value, not good
     calculateScore();
-    console.log(score);    
+    console.log(results.score);    
     scoreScreenWord();
-    document.getElementById("scoreScreenWord").innerHTML = word;
-    document.getElementById("scoreScreenScore").innerHTML = score;
+    console.log(results.word);
+    document.getElementById("scoreScreenWord").innerHTML = results.word;
+    document.getElementById("scoreScreenScore").innerHTML = results.score;
+    document.getElementById("scoreScreenCorrect").innerHTML = checked.rightAnswers + "/" + checked.repetitions;
     displayFunction("scoreScreen", "playing");
 }
 
@@ -207,7 +216,6 @@ function tryAgain() {
 }
 
 function scoreScreenWord() {
-    var word = "";
     if (checked.rightAnswers === checked.repetitions){
         word = "Perfect";
     }
@@ -217,16 +225,19 @@ function scoreScreenWord() {
     else {
         word = "Good";
     }
-    return word;
+    results.word = word;
 }
 
 function calculateScore() {
-    var score = 0;
     let elapsedTime = (((Date.now() - timer.timerStart)/100) / checked.repetitions); 
-    console.log(elapsedTime+" elapsedTime");
-    var mistakes = checked.repetitionsDone - checked.rightAnswers;
     var score = (checked.rightAnswers / checked.repetitions) * 1000;
     score -= (elapsedTime * 10);
-    return score;
+    if (score > 0){
+        results.score = score;
+    }
+    else {
+        results.score = 1;
+    }
+    
 }
 //id="scoreScreenScore"
