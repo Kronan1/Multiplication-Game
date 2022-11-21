@@ -101,8 +101,8 @@ function resetHighscores(){
 function displayFunction(visibilityVar, visibilityVar2) {
     document.getElementById(visibilityVar2+"Header").style.display = "none";
     document.getElementById(visibilityVar2+"Main").style.display = "none";
-    document.getElementById(visibilityVar+"Header").style.display = "inherit";
-    document.getElementById(visibilityVar+"Main").style.display = "inherit";
+    document.getElementById(visibilityVar+"Header").style.display = "initial";
+    document.getElementById(visibilityVar+"Main").style.display = "initial";
     console.log(visibilityVar);
     console.log(visibilityVar2);
     
@@ -233,11 +233,15 @@ function calculateScore() {
     var score = (checked.rightAnswers / checked.repetitions) * 1000;
     score -= (elapsedTime * 10);
     if (score > 0){
-        results.score = score;
+        results.score = Math.round(score);
     }
     else {
         results.score = 1;
-    }
-    
+    }   
 }
 //id="scoreScreenScore"
+/*
+var score = (checked.rightAnswers / checked.repetitions) * 1000;
+var repetitions = (checked.rightAnswers / checked.repetitions) * 1;
+var difficulty = vilka tabeller + adde / antal tabeller
+*/

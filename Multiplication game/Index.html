@@ -9,28 +9,30 @@
     </head>
     <body>
         <header>
-            <div class="grid-container start" id="startHeader">
-                <button class="grid-item" id="highscores" onclick="highscoresFunction()">Highscores</button>
+            <div class="start" id="startHeader">
+                <button id="highscores" onclick="highscoresFunction()">Highscores</button>
             </div>
-            <div class="grid-container playing" id="playingHeader">
-                <div class="grid-item"></div>
-                <div class="grid-item">
-                    <button class="grid-item" onclick="resetPlaying()" id="test-btn">X</button>
+            <div class="playing hidden-start" id="playingHeader">
+                <div></div>
+                <div class="exit">
+                    <button onclick="resetPlaying()" id="test-btn">X</button>
                 </div>
             </div>
-            <div class="grid-container" id="highscoresHeader">
-                <button onclick="resetHighscores()">Start</button>
+            <div class="highscores hidden-start" id="highscoresHeader">
+                <div class="exit">
+                    <button onclick="resetHighscores()">Start</button>
+                </div>
             </div>
-            <div class="grid-container scoreScreen" id="scoreScreenHeader">
-                <div class="grid-item">
-                    <button class="grid-item" onclick="resetScoreScreen()" id="scoreScreen-btn">X</button>
+            <div class="scoreScreen hidden-start" id="scoreScreenHeader">
+                <div class="exit">
+                    <button onclick="resetScoreScreen()" id="scoreScreen-btn">X</button>
                 </div>
             </div>
         </header>
         <main>
-            <div class="grid-container start" id="startMain">
-                <div class="grid-item">
-                    <fieldset>
+            <div class="flex-container start" id="startMain">
+                <div class="checkbox-container side-container">
+                    <fieldset class="input-sides">
                         <legend>Tables</legend>
                         <div>
                             <input type="checkbox" id="tables-1" value="1" class="tablesCheckbox">
@@ -78,23 +80,22 @@
                         </div>
                     </fieldset>
                 </div>
-
-                <div class="grid-item">
-                    <img id="background-image">
+                <div class="start-container center-container">
+                    <div class="center-item">
+                        <img id="background-image">
+                    </div>
+                    <div class="center-item">
+                        <input class="center-item" type="text" id="input-name" placeholder="Name">
+                    </div>
+                    <div class="center-item">
+                        <button class="center-item start-btn" onclick="startFunction()" id="start-btn">Start</button>
+                    </div>
+                    <div clas="center-item">
+                        <button class="center-item" onclick="timedFunction()" id="timed-btn">timed</button>
+                    </div>
                 </div>
-
-                <div class="grid-item">
-                    <!-- Fix to only allow letters and numbers -->
-                    <input type="text" id="input-name" placeholder="Name">
-                    <button onclick="startFunction()" id="start-btn">Start</button>
-                </div>
-
-                <div class="grid-item"">
-                    <!-- Button that works like checkbox -->
-                    <button onclick="timedFunction()" id="timed-btn">timed</button>
-                </div>
-                <div class="grid-item" id="repetitions-box">
-                    <fieldset>
+                <div class="start-container side-container" id="repetitions-flex-container">
+                    <fieldset class="input-sides">
                         <legend>Amount</legend>
                         <input type="radio" id="rep-0" value="10" name="repetitions" checked>
                         <label for="rep-ten">10</label>
@@ -125,26 +126,19 @@
                     </fieldset>
                 </div>
             </div>
-            <div class="grid-container playing" id="playingMain">
-                <div class="grid-item">
+            <div class="flex-container playing hidden-start" id="playingMain">
+                <div class="math-problem">
                     <p class="solveNumber" id="solveTable"></p>
-                    <p class="solveNumber " id="solveX">X</p>
+                    <p class="solveNumber" id="solveX">X</p>
                     <p class="solveNumber" id="solveTimes"></p>
                     <input type="text" id="numberField" onkeyup="pressedH(this);">
                 </div>
             </div>
-            <div class="grid-container" id="scoreScreenMain">
-                <div class="grid-item">
-                    <p class="scoreScreen" id="scoreScreenWord"></p>
-                </div>
-                <div class="grid-item">
-                    <p class="scoreScreen" id="scoreScreenScore"></p>
-                </div>
-                <div class="grid-item">
-                    <p class="scoreScreen" id="scoreScreenCorrect"></p>
-                </div>
-                <div class="grid-item">
-                    <button onclick="tryAgain();" id="tryAgain-btn">Try Again</button>
+            <div class="flex-container hidden-start" id="scoreScreenMain">
+                <p id="scoreScreenWord"></p>
+                <p id="scoreScreenScore"></p>
+                <p id="scoreScreenCorrect"></p>
+                <button class="hidden-start" onclick="tryAgain();" id="tryAgain-btn">Try Again</button>
                 </div>
             </div>
         </main>
