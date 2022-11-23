@@ -16,6 +16,7 @@
 
 
 .side-container{
+    align-items: center;
     width: 25vw;
     height: 30vw;
 }
@@ -33,6 +34,10 @@
 .center-item{
     border-color: brown;
     justify-content: right;
+}
+
+.input-sides > .repetitions{
+  flex-direction: column;
 }
 
 
