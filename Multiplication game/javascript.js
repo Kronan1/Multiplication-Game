@@ -36,13 +36,15 @@ function timedFunction() {
 
 function startFunction() {
     resetFunction();
-    tablesVariables();
+    
+    if (tablesVariables() === false) {
+        return 1;
+    }
     nameVariables();
     repVariables();
     timedFunction();
-    timer.timerStart = Date.now();
-    console.log(checked.timed);
     displayFunction("playing", "start");
+    timer.timerStart = Date.now();
     document.getElementById("numberField").focus();
     repFunction();
 }
@@ -51,7 +53,10 @@ function startFunction() {
 // Create necessary variables to play
 function tablesVariables() {
     var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-    
+    if (checkboxes.length == 0) {
+        console.log("ZeroCheckbox");
+        return false;
+    }
     const tables = [];
     for (let index = 0; index < checkboxes.length; index++) {
         var tablePush = parseInt(checkboxes[index].value);
@@ -99,13 +104,21 @@ function resetHighscores(){
 
 
 function displayFunction(visibilityVar, visibilityVar2) {
+    console.log(document.getElementById("startMain").style.display);
+    console.log(document.getElementById("playingMain").style.display);
     document.getElementById(visibilityVar2+"Header").style.display = "none";
     document.getElementById(visibilityVar2+"Main").style.display = "none";
-    document.getElementById(visibilityVar+"Header").style.display = "initial";
-    document.getElementById(visibilityVar+"Main").style.display = "initial";
+   
+    if (visibilityVar === "start") {
+        document.getElementById(visibilityVar+"Header").style.display = "flex";
+        document.getElementById(visibilityVar+"Main").style.display = "flex";
+    } else {
+        document.getElementById(visibilityVar+"Header").style.display = "initial";
+        document.getElementById(visibilityVar+"Main").style.display = "initial";
+    }
+    
     console.log(visibilityVar);
     console.log(visibilityVar2);
-    
 }
 
 

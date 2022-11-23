@@ -15,17 +15,17 @@
             <div class="playing hidden-start" id="playingHeader">
                 <div></div>
                 <div class="exit">
-                    <button onclick="resetPlaying()" id="test-btn">X</button>
+                    <button onclick="resetPlaying()">X(resetPlaying)</button>
                 </div>
             </div>
             <div class="highscores hidden-start" id="highscoresHeader">
                 <div class="exit">
-                    <button onclick="resetHighscores()">Start</button>
+                    <button onclick="resetHighscores()">x(resetHighscores)</button>
                 </div>
             </div>
             <div class="scoreScreen hidden-start" id="scoreScreenHeader">
                 <div class="exit">
-                    <button onclick="resetScoreScreen()" id="scoreScreen-btn">X</button>
+                    <button onclick="resetScoreScreen()" id="scoreScreen-btn">X(resetScoreScreen)</button>
                 </div>
             </div>
         </header>
@@ -140,6 +140,9 @@
                 <p id="scoreScreenCorrect"></p>
                 <button class="hidden-start" onclick="tryAgain();" id="tryAgain-btn">Try Again</button>
                 </div>
+            </div>
+            <div class="hidden-start" id="highscoresMain">
+                <p>test</p>
             </div>
         </main>
     </body>
