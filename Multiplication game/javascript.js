@@ -54,7 +54,8 @@ function startFunction() {
 function tablesVariables() {
     var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
     if (checkboxes.length == 0) {
-        console.log("ZeroCheckbox");
+        console.log("No selected tables");
+        document.getElementById("errorTables").style.display = "flex"
         return false;
     }
     const tables = [];
@@ -104,8 +105,6 @@ function resetHighscores(){
 
 
 function displayFunction(visibilityVar, visibilityVar2) {
-    console.log(document.getElementById("startMain").style.display);
-    console.log(document.getElementById("playingMain").style.display);
     document.getElementById(visibilityVar2+"Header").style.display = "none";
     document.getElementById(visibilityVar2+"Main").style.display = "none";
    
@@ -200,6 +199,7 @@ function resetFunction() {
     checked.lastNumber = -1;
     results.score = 0;
     results.word = "";
+    document.getElementById("errorTables").style.display = "none";
 }
 
 

@@ -3,19 +3,21 @@
 #highscoresHeader,
 #highscoresMain,
 #scoreScreenHeader,
-#scoreScreenMain{
+#scoreScreenMain,
+#errorTables{
   display: none;
 }
 
 #startHeader,
 #startMain{
   display: flex;
+  height: 90vh;
 }
 
 
 #startHeader{
   background-color: blueviolet;
-  height: 90px;
+  height: 10vh;
 }
 
 
@@ -42,7 +44,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
   width: 50vw;
+  height: 40vw;
   background-color: black;
 }
 
@@ -53,6 +57,11 @@
 
 .input-sides > .repetitions{
   flex-direction: column;
+}
+
+
+#errorTables{
+  color: chartreuse;
 }
 
 
