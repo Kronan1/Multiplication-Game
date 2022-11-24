@@ -28,6 +28,8 @@
 }
 
 
+/* Start Page */
+
 .side-container{
   align-items: center;
   width: 25vw;
@@ -35,7 +37,7 @@
 }
 
 .input-sides{
-  height: 27vw;
+  height: 100%;
   border-style: dotted;
 }
 
